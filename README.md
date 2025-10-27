@@ -1,4 +1,4 @@
-# API REST COM SPRING BOOT
+# 🚀API REST COM SPRING BOOT
 
 ## Sobre o projeto:
 
