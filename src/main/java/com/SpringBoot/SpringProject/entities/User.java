@@ -3,7 +3,9 @@ package com.SpringBoot.SpringProject.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_users")
@@ -17,6 +19,12 @@ public class User implements Serializable {
     private String email;
     private String phone;
     private String password;
+
+    @OneToMany
+    @JoinTable(name = "tb_order_users",
+            joinColumns = @JoinColumn(name = "tb_USERS"),
+    inverseJoinColumns = @JoinColumn(name = "tb_ORDERS"))
+    private Set<Order> orders = new HashSet<>();
 
 
     public User(){
@@ -70,6 +78,10 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
     }
 
 

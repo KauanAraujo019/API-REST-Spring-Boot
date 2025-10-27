@@ -1,6 +1,7 @@
 package com.SpringBoot.SpringProject.entities;
 
 import com.SpringBoot.SpringProject.entities.enums.OrderStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -18,6 +19,9 @@ public class Order implements Serializable {
     private Instant moment;
 
     private Integer orderStatus;
+
+    @ManyToOne
+    private User user;
 
 
     public Order(){
@@ -64,6 +68,14 @@ public class Order implements Serializable {
 
     }
 
+    @JsonIgnore
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Override
     public boolean equals(Object o) {

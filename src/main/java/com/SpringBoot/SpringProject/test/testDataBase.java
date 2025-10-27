@@ -41,6 +41,17 @@ public class testDataBase implements CommandLineRunner {
         Order order2 = new Order(null, Instant.now(), OrderStatus.PAID);
         Order order3 = new Order(null, Instant.now(), OrderStatus.DELIVERED);
 
+        order1.setUser(user1);
+        order2.setUser(user3);
+        order3.setUser(user1);
+
+        orderRepository.saveAll(Arrays.asList(order1, order2, order3));
+
+        user1.getOrders().add(order1);
+        user1.getOrders().add(order3);
+        user3.getOrders().add(order2);
+
+
         orderRepository.saveAll(Arrays.asList(order1, order2, order3));
 
         Category category1 = new Category(null, "Hardware");
@@ -63,6 +74,8 @@ public class testDataBase implements CommandLineRunner {
         product4.getcategories().add(category2);
 
         productRepository.saveAll(Arrays.asList(product1, product2, product3, product4));
+
+        userRepository.saveAll(Arrays.asList(user1, user2, user3));
 
 
 
