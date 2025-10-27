@@ -80,10 +80,12 @@ public class testDataBase implements CommandLineRunner {
 
         orderItemRepository.saveAll(Arrays.asList(orderItem1, orderItem2, orderItem3, orderItem4));
 
+        Payment payment = new Payment(null, Instant.now());
 
+        payment.setOrder(order1);
+        order1.setPayment(payment);
 
-
-
+        orderRepository.save(order1);
 
 
     }

@@ -1,5 +1,6 @@
 package com.SpringBoot.SpringProject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -15,7 +16,9 @@ public class Payment implements Serializable {
 
     private Instant moment;
 
+    @JsonIgnore
     @OneToOne
+    @MapsId
     private Order order;
 
 
@@ -44,6 +47,11 @@ public class Payment implements Serializable {
         this.moment = moment;
     }
 
+    public Order getOrder() {
+        return order;
+    }
 
-
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 }
