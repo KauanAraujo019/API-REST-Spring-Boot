@@ -3,6 +3,7 @@ package com.SpringBoot.SpringProject.test;
 import com.SpringBoot.SpringProject.entities.Order;
 import com.SpringBoot.SpringProject.entities.User;
 import com.SpringBoot.SpringProject.entities.enums.OrderStatus;
+import com.SpringBoot.SpringProject.repositories.OrderRepository;
 import com.SpringBoot.SpringProject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,6 +17,8 @@ public class testDataBase implements CommandLineRunner {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private OrderRepository orderRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -30,9 +33,7 @@ public class testDataBase implements CommandLineRunner {
         Order order2 = new Order(null, Instant.now(), OrderStatus.PAID);
         Order order3 = new Order(null, Instant.now(), OrderStatus.DELIVERED);
 
-
-
-
+        orderRepository.saveAll(Arrays.asList(order1, order2, order3));
 
 
 
