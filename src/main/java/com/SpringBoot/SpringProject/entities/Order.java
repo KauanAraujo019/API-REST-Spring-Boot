@@ -7,6 +7,7 @@ import java.time.Instant;
 import java.util.Objects;
 
 @Entity
+@Table(name = "tb_orders")
 public class Order {
 
     @Id
@@ -15,7 +16,6 @@ public class Order {
 
     private Instant moment;
 
-    @Enumerated
     private Integer orderStatus;
 
 
