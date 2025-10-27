@@ -1,6 +1,8 @@
 package com.SpringBoot.SpringProject.test;
 
+import com.SpringBoot.SpringProject.entities.Category;
 import com.SpringBoot.SpringProject.entities.Order;
+import com.SpringBoot.SpringProject.entities.Product;
 import com.SpringBoot.SpringProject.entities.User;
 import com.SpringBoot.SpringProject.entities.enums.OrderStatus;
 import com.SpringBoot.SpringProject.repositories.OrderRepository;
@@ -19,6 +21,8 @@ public class testDataBase implements CommandLineRunner {
     private UserRepository userRepository;
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private
 
     @Override
     public void run(String... args) throws Exception {
@@ -34,6 +38,21 @@ public class testDataBase implements CommandLineRunner {
         Order order3 = new Order(null, Instant.now(), OrderStatus.DELIVERED);
 
         orderRepository.saveAll(Arrays.asList(order1, order2, order3));
+
+        Category category1 = new Category(null, "Hardware");
+        Category category2 = new Category(null, "Eletronics");
+        Category category3 = new Category(null, "Books");
+
+
+
+
+        Product product1 = new Product(null, "Placa mãe aorus elite B550m", "Placa mãe", 729.99, "");
+        Product product2 = new Product(null, "Ryzen 5 5600G", "Processador Ryzen AMD", 899.0, "");
+        Product product3 = new Product(null, "Engenharia de software ian sommerville 10ed", "livro sobre engenharia de software", 284.99, "");
+        Product product4 = new Product(null, "Xiaomi redmi note 13 PRO PLUS ", "telefone celular importado", 2189.99, "");
+
+
+
 
 
 
