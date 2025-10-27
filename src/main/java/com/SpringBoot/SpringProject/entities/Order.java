@@ -1,14 +1,12 @@
 package com.SpringBoot.SpringProject.entities;
 
 import com.SpringBoot.SpringProject.entities.enums.OrderStatus;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.Instant;
 import java.util.Objects;
 
+@Entity
 public class Order {
 
     @Id
