@@ -5,6 +5,7 @@ import com.SpringBoot.SpringProject.repositories.UserRepository;
 import com.SpringBoot.SpringProject.services.exceptions.ResourceNotFoundException;
 import com.SpringBoot.SpringProject.services.exceptions.dataBaseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 
@@ -36,13 +37,36 @@ public class UserService {
 
     public void remove(Long id){
 
-        userRepository.findById(id).orElseThrow(() -> new dataBaseException(id));
+        try {
 
 
-        userRepository.deleteById(id);
+            userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
+
+            userRepository.deleteById(id);
+
+        }catch (DataIntegrityViolationException e){
+            throw new dataBaseException(id);
+        }
 
 
+    }
 
+    public User update(Long id, User user){
+
+        User obj = userRepository.getReferenceById(id);
+
+        UpdateToObj(user, obj);
+
+        userRepository.save(obj);
+
+        return obj;
+
+    }
+
+    private void UpdateToObj(User user, User obj) {
+
+        obj.setName(user.getName());
+        obj.setEmail(user.getEmail());
 
     }
 

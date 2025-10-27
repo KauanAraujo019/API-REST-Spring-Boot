@@ -33,8 +33,8 @@ public class ResourceNotFoundHandlerException {
     public ResponseEntity<StandardError> getdataBaseEx(dataBaseException e, HttpServletRequest hp){
 
         Instant moment = Instant.now();
-        HttpStatus status = HttpStatus.NOT_FOUND;
-        String error = "ID not found in server";
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        String error = "DataIntegrityViolationException -> User have data in server";
         String message = e.getMessage();
         String path = hp.getRequestURI();
 

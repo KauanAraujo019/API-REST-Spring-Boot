@@ -33,7 +33,7 @@ public class UserController {
     }
 
 
-    @PostMapping(value = "")
+    @PostMapping
     public ResponseEntity<User> insert(@RequestBody User user){
 
         userService.insert(user);
@@ -51,6 +51,15 @@ public class UserController {
         userService.remove(id);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user){
+
+        userService.update(id, user);
+
+        return ResponseEntity.ok().body(user);
+
     }
 
 
