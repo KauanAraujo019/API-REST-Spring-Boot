@@ -3,6 +3,7 @@ package com.SpringBoot.SpringProject.services;
 import com.SpringBoot.SpringProject.entities.User;
 import com.SpringBoot.SpringProject.repositories.UserRepository;
 import com.SpringBoot.SpringProject.services.exceptions.ResourceNotFoundException;
+import com.SpringBoot.SpringProject.services.exceptions.dataBaseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,18 @@ public class UserService {
     public void insert(User user){
 
         userRepository.save(user);
+
+    }
+
+    public void remove(Long id){
+
+        userRepository.findById(id).orElseThrow(() -> new dataBaseException(id));
+
+
+        userRepository.deleteById(id);
+
+
+
 
     }
 

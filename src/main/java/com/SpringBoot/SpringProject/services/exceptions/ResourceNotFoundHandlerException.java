@@ -15,7 +15,22 @@ public class ResourceNotFoundHandlerException {
 
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<StandardError> getNotFound(ResourceNotFoundException e, HttpServletRequest hp){
+    public ResponseEntity<StandardError> getNotFoundEx(ResourceNotFoundException e, HttpServletRequest hp){
+
+        Instant moment = Instant.now();
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        String error = "ID not found in server";
+        String message = e.getMessage();
+        String path = hp.getRequestURI();
+
+        StandardError standardError = new StandardError(moment, status.value(), error, message, path);
+
+        return ResponseEntity.status(status).body(standardError);
+
+    }
+
+    @ExceptionHandler(dataBaseException.class)
+    public ResponseEntity<StandardError> getdataBaseEx(dataBaseException e, HttpServletRequest hp){
 
         Instant moment = Instant.now();
         HttpStatus status = HttpStatus.NOT_FOUND;
