@@ -1,4 +1,4 @@
-package com.SpringBoot.SpringProject.test;
+package com.SpringBoot.SpringProject.Config;
 
 import com.SpringBoot.SpringProject.entities.*;
 import com.SpringBoot.SpringProject.entities.enums.OrderStatus;
@@ -11,7 +11,7 @@ import java.time.Instant;
 import java.util.Arrays;
 
 @Configuration
-public class testDataBase implements CommandLineRunner {
+public class ConfigTest implements CommandLineRunner {
 
     @Autowired
     private UserRepository userRepository;
