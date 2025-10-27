@@ -5,7 +5,9 @@ import com.SpringBoot.SpringProject.entities.Order;
 import com.SpringBoot.SpringProject.entities.Product;
 import com.SpringBoot.SpringProject.entities.User;
 import com.SpringBoot.SpringProject.entities.enums.OrderStatus;
+import com.SpringBoot.SpringProject.repositories.CategoryRepository;
 import com.SpringBoot.SpringProject.repositories.OrderRepository;
+import com.SpringBoot.SpringProject.repositories.ProductRepository;
 import com.SpringBoot.SpringProject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -22,7 +24,9 @@ public class testDataBase implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepository;
     @Autowired
-    private
+    private ProductRepository productRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -43,7 +47,7 @@ public class testDataBase implements CommandLineRunner {
         Category category2 = new Category(null, "Eletronics");
         Category category3 = new Category(null, "Books");
 
-
+        categoryRepository.saveAll(Arrays.asList(category1, category2, category3));
 
 
         Product product1 = new Product(null, "Placa mãe aorus elite B550m", "Placa mãe", 729.99, "");
@@ -52,7 +56,7 @@ public class testDataBase implements CommandLineRunner {
         Product product4 = new Product(null, "Xiaomi redmi note 13 PRO PLUS ", "telefone celular importado", 2189.99, "");
 
 
-
+        productRepository.saveAll(Arrays.asList(product1, product2, product3, product4));
 
 
 
