@@ -1,11 +1,14 @@
 package com.SpringBoot.SpringProject.test;
 
+import com.SpringBoot.SpringProject.entities.Order;
 import com.SpringBoot.SpringProject.entities.User;
+import com.SpringBoot.SpringProject.entities.enums.OrderStatus;
 import com.SpringBoot.SpringProject.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.Instant;
 import java.util.Arrays;
 
 @Configuration
@@ -22,6 +25,16 @@ public class testDataBase implements CommandLineRunner {
         User user3 = new User(null, "Pedro Generic", "pedro@gmail", "7707077", "0000003");
 
         userRepository.saveAll(Arrays.asList(user1, user2, user3));
+
+        Order order1 = new Order(null, Instant.now(), OrderStatus.WAITING_PAYMENT);
+        Order order2 = new Order(null, Instant.now(), OrderStatus.PAID);
+        Order order3 = new Order(null, Instant.now(), OrderStatus.DELIVERED);
+
+
+
+
+
+
 
     }
 }
