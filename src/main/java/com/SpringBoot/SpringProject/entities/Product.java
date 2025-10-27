@@ -1,11 +1,10 @@
 package com.SpringBoot.SpringProject.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Product {
@@ -18,6 +17,12 @@ public class Product {
     private String description;
     private Double price;
     private String imgUrl;
+
+    @ManyToMany
+    @JoinTable(name = "tb_product_category",
+            joinColumns = @JoinColumn(name = "tb_product"),
+            inverseJoinColumns = @JoinColumn(name = "tb_category"))
+    private Set<Category> categorySet = new HashSet<>();
 
 
     public Product(){
@@ -71,6 +76,10 @@ public class Product {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public Set<Category> getProductSet() {
+        return categorySet;
     }
 
 
