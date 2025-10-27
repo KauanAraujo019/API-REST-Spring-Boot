@@ -1,14 +1,8 @@
 package com.SpringBoot.SpringProject.test;
 
-import com.SpringBoot.SpringProject.entities.Category;
-import com.SpringBoot.SpringProject.entities.Order;
-import com.SpringBoot.SpringProject.entities.Product;
-import com.SpringBoot.SpringProject.entities.User;
+import com.SpringBoot.SpringProject.entities.*;
 import com.SpringBoot.SpringProject.entities.enums.OrderStatus;
-import com.SpringBoot.SpringProject.repositories.CategoryRepository;
-import com.SpringBoot.SpringProject.repositories.OrderRepository;
-import com.SpringBoot.SpringProject.repositories.ProductRepository;
-import com.SpringBoot.SpringProject.repositories.UserRepository;
+import com.SpringBoot.SpringProject.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +21,8 @@ public class testDataBase implements CommandLineRunner {
     private ProductRepository productRepository;
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private OrderItemRepository  orderItemRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -76,6 +72,15 @@ public class testDataBase implements CommandLineRunner {
         productRepository.saveAll(Arrays.asList(product1, product2, product3, product4));
 
         userRepository.saveAll(Arrays.asList(user1, user2, user3));
+
+        OrderItem orderItem1 = new OrderItem(order1, product1, product1.getPrice(), 1);
+        OrderItem orderItem2 = new OrderItem(order1, product2, product2.getPrice(), 1);
+        OrderItem orderItem3 = new OrderItem(order2, product3, product3.getPrice(), 2);
+        OrderItem orderItem4 = new OrderItem(order3, product4, product4.getPrice(), 4);
+
+        orderItemRepository.saveAll(Arrays.asList(orderItem1, orderItem2, orderItem3, orderItem4));
+
+
 
 
 

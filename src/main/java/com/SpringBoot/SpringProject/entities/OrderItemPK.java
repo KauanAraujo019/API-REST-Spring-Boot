@@ -2,7 +2,7 @@ package com.SpringBoot.SpringProject.entities;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,11 +10,11 @@ import java.util.Objects;
 @Embeddable
 public class OrderItemPK implements Serializable {
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "id_order")
     private Order order;
 
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "id_product")
     private Product product;
 
