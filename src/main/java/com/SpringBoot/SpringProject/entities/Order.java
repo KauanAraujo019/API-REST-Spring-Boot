@@ -3,12 +3,13 @@ package com.SpringBoot.SpringProject.entities;
 import com.SpringBoot.SpringProject.entities.enums.OrderStatus;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
 @Entity
 @Table(name = "tb_orders")
-public class Order {
+public class Order implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,8 +55,12 @@ public class Order {
         if (orderStatus != null){
             this.orderStatus = orderStatus.getCode();
         }
+        else{
 
-        throw new IllegalArgumentException("orderStatus Invalid");
+            throw new IllegalArgumentException("orderStatus Invalid");
+
+        }
+
 
     }
 
