@@ -55,8 +55,16 @@ public class testDataBase implements CommandLineRunner {
         Product product3 = new Product(null, "Engenharia de software ian sommerville 10ed", "livro sobre engenharia de software", 284.99, "");
         Product product4 = new Product(null, "Xiaomi redmi note 13 PRO PLUS ", "telefone celular importado", 2189.99, "");
 
+        product1.getcategories().add(category1);
+        product1.getcategories().add(category2);
+        product2.getcategories().add(category1);
+        product2.getcategories().add(category2);
+        product3.getcategories().add(category3);
+        product4.getcategories().add(category2);
 
         productRepository.saveAll(Arrays.asList(product1, product2, product3, product4));
+
+
 
 
 

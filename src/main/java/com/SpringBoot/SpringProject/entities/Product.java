@@ -1,5 +1,6 @@
 package com.SpringBoot.SpringProject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -20,11 +21,12 @@ public class Product implements Serializable {
     private Double price;
     private String imgUrl;
 
+
     @ManyToMany
     @JoinTable(name = "tb_product_category",
             joinColumns = @JoinColumn(name = "tb_product"),
             inverseJoinColumns = @JoinColumn(name = "tb_category"))
-    private Set<Category> categorySet = new HashSet<>();
+    private Set<Category> categories = new HashSet<>();
 
 
     public Product(){
@@ -80,8 +82,8 @@ public class Product implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public Set<Category> getProductSet() {
-        return categorySet;
+    public Set<Category> getcategories() {
+        return categories;
     }
 
 

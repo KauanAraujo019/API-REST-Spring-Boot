@@ -1,5 +1,6 @@
 package com.SpringBoot.SpringProject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -17,8 +18,9 @@ public class Category implements Serializable {
 
     private String name;
 
-    @ManyToMany(mappedBy = "categorySet")
-    private Set<Product> productSet = new HashSet<>();
+    @JsonIgnore
+    @ManyToMany(mappedBy = "categories")
+    private Set<Product> items = new HashSet<>();
 
 
     public Category(){
@@ -48,8 +50,9 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public Set<Product> getProductSet() {
-        return productSet;
+
+    public Set<Product> getitems() {
+        return items;
     }
 
 
